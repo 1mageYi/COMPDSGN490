@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysterious Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mysterious Database</h1>
+    <div class="grid">
+        <!-- Generate 100 images -->
+        <!-- Replace '#' with actual URLs -->
+        <!-- Replace 'placeholder.png' with '?' image URL -->
+        <!-- Example images -->
+        <script>
+            const grid = document.querySelector('.grid');
+            for (let i = 1; i <= 100; i++) {
+                grid.innerHTML += `
+                    <div class="grid-item">
+                        <a href="https://example.com/${i}" target="_blank">
+                            <img src="https://via.placeholder.com/100?text=%3F" alt="Image ${i}">
+                        </a>
+                    </div>
+                `;
+            }
+        </script>
+    </div>
+</body>
+</html>
