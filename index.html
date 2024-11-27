@@ -51,23 +51,35 @@
 </head>
 <body>
     <h1>Mysterious Database</h1>
-    <div class="grid">
-        <!-- Generate 100 images -->
-        <!-- Replace '#' with actual URLs -->
-        <!-- Replace 'placeholder.png' with '?' image URL -->
-        <!-- Example images -->
-        <script>
-            const grid = document.querySelector('.grid');
-            for (let i = 1; i <= 100; i++) {
-                grid.innerHTML += `
-                    <div class="grid-item">
-                        <a href="https://example.com/${i}" target="_blank">
-                            <img src="static/Question.png" alt="Image ${i}">
-                        </a>
-                    </div>
-                `;
-            }
-        </script>
-    </div>
+    <div class="grid"></div>
+
+    <script>
+        // Load links from a local file
+        fetch('links.txt')
+            .then(response => response.text())
+            .then(data => {
+                // Split links into an array and filter out empty lines
+                const links = data.split('\n').filter(link => link.trim() !== '');
+
+                // Shuffle the links array
+                for (let i = links.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [links[i], links[j]] = [links[j], links[i]];
+                }
+
+                // Generate the grid with the number of links
+                const grid = document.querySelector('.grid');
+                links.forEach((link, index) => {
+                    grid.innerHTML += `
+                        <div class="grid-item">
+                            <a href="${link}" target="_blank">
+                                <img src="static/Question.png" alt="Image ${index + 1}">
+                            </a>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error loading links:', error));
+    </script>
 </body>
 </html>
